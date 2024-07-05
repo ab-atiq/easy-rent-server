@@ -5,11 +5,16 @@
 Step-1:
 
 ```sh
-npm install
+git clone https://github.com/ab-atiq/easy-rent-server.git
 ```
 
 Step-2:
 
+```sh
+npm install
+```
+
+Step-3: 
 ```sh
 node start
 ```
