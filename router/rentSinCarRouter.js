@@ -65,17 +65,17 @@ router.post("/success", async (req, res) => {
 
   res
     .status(200)
-    .redirect(`https://easy-rent-server.onrender.com/rent/${req.body.tran_id}`);
+    .redirect(`https://easyrent-rosy.vercel.app/rent/${req.body.tran_id}`);
 });
 router.post("/fail", async (req, res) => {
   const filter = { tran_id: req.body.tran_id };
   // res.status(400).json(req.body);
-  res.status(200).redirect("https://easy-rent-server.onrender.com/paymentcancel");
+  res.status(200).redirect("https://easyrent-rosy.vercel.app/paymentcancel");
   let order = await rentSinCarModal.findOneAndDelete(filter, { new: true });
 });
 router.post("/cancel", async (req, res) => {
   const filter = { tran_id: req.body.tran_id };
-  res.status(200).redirect("https://easy-rent-server.onrender.com/paymentcancel");
+  res.status(200).redirect("https://easyrent-rosy.vercel.app/paymentcancel");
   let order = await rentSinCarModal.findOneAndDelete(filter, { new: true });
 });
 
