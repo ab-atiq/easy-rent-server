@@ -10,10 +10,10 @@ router.post("/init", async (req, res) => {
     total_amount: req.body?.rent,
     currency: "USD",
     tran_id: uuidv4(),
-    success_url: "https://guarded-taiga-13015.herokuapp.com/api/find/success",
-    fail_url: "https://guarded-taiga-13015.herokuapp.com/api/find/fail",
-    cancel_url: "https://guarded-taiga-13015.herokuapp.com/api/find/cancel",
-    ipn_url: "https://guarded-taiga-13015.herokuapp.com/api/find/ipn",
+    success_url: "https://easy-rent-server.onrender.com/api/find/success",
+    fail_url: "https://easy-rent-server.onrender.com/api/find/fail",
+    cancel_url: "https://easy-rent-server.onrender.com/api/find/cancel",
+    ipn_url: "https://easy-rent-server.onrender.com/api/find/ipn",
     shipping_method: "Courier",
     paymentStatus: "pending",
     product_name: req.body?.carName,
@@ -133,21 +133,21 @@ router.get("/coursePayed/:email", async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
-
 });
-router.delete('/rentCarsdelete/:id', (req, res) => {
-
-  rentSinCarModal.deleteOne({ _id: req.params.id }, (err) => {
-    if (err) {
-      res.status(500).send({
-        error: 'There was a server side error'
-      })
-    } else {
-      res.status(200).json({
-        message: "Order is deleted successfully"
-      })
-    }
-  }).clone()
+router.delete("/rentCarsdelete/:id", (req, res) => {
+  rentSinCarModal
+    .deleteOne({ _id: req.params.id }, (err) => {
+      if (err) {
+        res.status(500).send({
+          error: "There was a server side error",
+        });
+      } else {
+        res.status(200).json({
+          message: "Order is deleted successfully",
+        });
+      }
+    })
+    .clone();
 });
 
 module.exports = router;
